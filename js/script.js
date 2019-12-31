@@ -17,7 +17,9 @@ FSJS project 2 - List Filter and Pagination
    scoped to that function.
 ***/
 
-
+let studentList = document.getElementsByClassName('student-item');
+let itemsPerPage = 10;
+console.log(studentList);
 
 
 /*** 
