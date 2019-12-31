@@ -37,8 +37,23 @@ console.log(studentList);
        "invoke" the function 
 ***/
 
+function showPage (list, page) {
+   let startIndex = (page * itemsPerPage) - itemsPerPage;
+   let endIndex = page * itemsPerPage;
 
+   for (i = 0; i < list.length; i++){
+      if (i >= startIndex && i <= endIndex){
+         // show list items 
+         console.log(list[i]);
+      }
 
+      else {
+         // hide list itmes
+      }
+   }
+}
+
+showPage(studentList,1);
 
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
