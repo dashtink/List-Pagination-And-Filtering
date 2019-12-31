@@ -60,7 +60,29 @@ showPage(studentList,1);
    functionality to the pagination buttons.
 ***/
 
+function appendPageLinks (list) {
+   let div = document.createElement('div');
+   let link = document.createElement('ul');
+   
+   let pageParent = document.querySelector('.page');
+   let pageList = document.querySelector('.page-header');
+   let numberButtons = Math.ceil(list.length / itemsPerPage);
+   //append button links inside of div
 
+   for (let i = 0; i < numberButtons; i++){
+   let lineItem = document.createElement('li');
+   lineItem.innerHTML = '<button>Button</button>';
+   link.appendChild(lineItem);
+   };
+
+   div.appendChild(link);
+   pageParent.insertBefore(div, pageList);
+
+   console.log(list);
+
+}
+
+appendPageLinks(studentList);
 
 
 
