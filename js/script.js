@@ -62,6 +62,8 @@ showPage(studentList,1);
 
 function appendPageLinks (list) {
    let div = document.createElement('div');
+   // add class of "pagination" to div  >>>>>>>>>>>>>>>>>>>>
+   div.className = 'pagination';
    let link = document.createElement('ul');
    
    let pageParent = document.querySelector('.page');
@@ -71,7 +73,13 @@ function appendPageLinks (list) {
 
    for (let i = 0; i < numberButtons; i++){
    let lineItem = document.createElement('li');
-   lineItem.innerHTML = '<button>Button</button>';
+   lineItem.innerHTML = '<a href=#>' + i + '</a>';
+   //* Each LI element should contain an A element with an href attribute of #, and text set to the page number each link will show. First link is 1. Second link is 2. And so on.*/
+      
+   //* Add the active class name to the first pagination link initially.*/
+
+   //* Add a “click” event listener to each A element. A loop can be helpful here.*/
+
    link.appendChild(lineItem);
    };
 
