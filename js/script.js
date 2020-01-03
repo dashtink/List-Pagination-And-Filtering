@@ -19,8 +19,6 @@ FSJS project 2 - List Filter and Pagination
 
 let studentList = document.getElementsByClassName('student-item');
 let itemsPerPage = 10;
-console.log(studentList);
-
 
 /*** 
    Create the `showPage` function to hide all of the items in the 
@@ -43,12 +41,12 @@ function showPage (list, page) {
 
    for (i = 0; i < list.length; i++){
       if (i >= startIndex && i <= endIndex){
-         // show list items 
+         list[i].style.display = '';
          console.log(list[i]);
       }
 
       else {
-         // hide list itmes
+         list[i].style.display = 'none';
       }
    }
 }
@@ -62,14 +60,11 @@ showPage(studentList,1);
 
 function appendPageLinks (list) {
    let div = document.createElement('div');
-   // add class of "pagination" to div  >>>>>>>>>>>>>>>>>>>>
    div.className = 'pagination';
    let link = document.createElement('ul');
-   
    let pageParent = document.querySelector('.page');
    let pageList = document.querySelector('.page-header');
    let numberButtons = Math.ceil(list.length / itemsPerPage);
-   //append button links inside of div
 
    for (let i = 0; i < numberButtons; i++){
    let lineItem = document.createElement('li');
@@ -81,6 +76,16 @@ function appendPageLinks (list) {
    //* Add a “click” event listener to each A element. A loop can be helpful here.*/
 
    link.appendChild(lineItem);
+
+   let links = lineItem.children;
+
+   for (let i = 0; i < links.length; i++){
+   links[i].addEventListener('click', (e) => {
+      console.log('link clicked');
+   });
+   };
+  
+
    };
 
    div.appendChild(link);
@@ -89,7 +94,6 @@ function appendPageLinks (list) {
    console.log(list);
 
 }
-
 appendPageLinks(studentList);
 
 
