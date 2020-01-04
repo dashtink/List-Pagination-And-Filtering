@@ -20,14 +20,15 @@ const showPage = (list, page) => {
    let endIndex = page * itemsPerPage;
 
    for (i = 0; i < list.length; i++){
-      if (i >= startIndex && i <= endIndex){
+      if (i >= startIndex && i < endIndex){
          list[i].style.display = '';
+         console.log(startIndex, endIndex);
       }
       else {
          list[i].style.display = 'none';
       }
    }
-}
+};
 
 showPage(studentList,1);
 
@@ -36,7 +37,7 @@ showPage(studentList,1);
 ***/
 
 const appendPageLinks = (list) => {
-   let numberOfLinks = Math.ceil(list.length / itemsPerPage);
+   let numberOfLinks = list.length / itemsPerPage + 1;
    let div = document.createElement('div');
    div.className = 'pagination';
    let unorderedList = document.createElement('ul');
@@ -67,10 +68,14 @@ const appendPageLinks = (list) => {
             };
 
             event.target.classList.add('active');
+            let pageNum = event.target.textContent;
+            console.log(pageNum);
+
+            showPage(studentList, pageNum);
       };
    }); 
    
-   pageParent.insertBefore(div, pageHeader);
+   pageParent.insertBefore(div, pageHeader);   
 
 }
 
