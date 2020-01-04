@@ -50,6 +50,7 @@ const appendPageLinks = (list) => {
       lineItem.innerHTML = '<a href=#>' + i + '</a>';
       unorderedList.appendChild(lineItem);
 
+      /** Sets first a tag to active */
       if (i === 1){
          lineItem.children[0].className = 'active';
       };
