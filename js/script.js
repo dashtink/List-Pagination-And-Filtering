@@ -51,20 +51,19 @@ const appendPageLinks = (list) => {
       unorderedList.appendChild(lineItem);
    };
 
-   //* Add a “click” event listener to each anchor tag. */
    let links = document.getElementsByTagName('A');
-   console.log(links);
+   
+   //* Add a “click” event listener to each anchor tag. */
+   div.addEventListener('click', (event) => {
+      if(event.target.tagName = 'A'){
 
-   for (let i = 0; i < links.length; i++) {
-      links[i].addEventListener("click", (event) => {
-         for (let i = 0; i < links.length; i++){
-         links[i].classList.remove('active');
-         };
-         event.target.classList.add('active');
-         
-         console.log('clicked');
-      });    
-   };
+         for(let i = 0; i < links.length; i++){
+            links[i].classList.remove('active');
+            };
+
+            event.target.classList.add('active');
+      };
+   }); 
    
    pageParent.insertBefore(div, pageHeader);
 
