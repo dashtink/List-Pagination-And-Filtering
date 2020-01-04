@@ -49,6 +49,10 @@ const appendPageLinks = (list) => {
       let lineItem = document.createElement('li');
       lineItem.innerHTML = '<a href=#>' + i + '</a>';
       unorderedList.appendChild(lineItem);
+
+      if (i === 1){
+         lineItem.children[0].className = 'active';
+      };
    };
 
    let links = document.getElementsByTagName('A');
