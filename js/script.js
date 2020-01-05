@@ -20,8 +20,10 @@ const showPage = (list, page) => {
    let endIndex = page * itemsPerPage;
    let p = document.createElement('p');
    p.textContent = "No results";
+   p.id = 'noResults';
    let ul = document.querySelector('.student-list');
    let div = ul.parentNode;
+   let checkForP = document.getElementById('noResults');
 
    for (i = 0; i < list.length; i++){
       if (i >= startIndex && i < endIndex){
@@ -33,10 +35,10 @@ const showPage = (list, page) => {
       }
    }
 
-   if (list.length == 0){
+   if (list.length == 0 && checkForP == null){
       div.insertBefore(p, ul);
-   } else if (div && list.length > 0){
-         p.remove();
+   } else if (checkForP && list.length >= 0 ){
+         checkForP.remove();
    }; 
 
 };
