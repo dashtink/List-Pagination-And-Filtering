@@ -80,17 +80,12 @@ const appendPageLinks = (list) => {
 
 }
 
-
 appendPageLinks(studentList);
 
+
 /*** 
-   1. Add search bar.
-      - Create div
-      - Create input
-      - Create button
-      - Append input and button inside of div (to the end of div)
-      - Append div to the end of the element with the class of '.page-header'
-*/
+  Creates search input and search button then appends elements to the element with the class of '.page-header';
+***/
 
 let searchDiv = document.createElement('div');
 searchDiv.className = 'student-search';
@@ -99,7 +94,6 @@ input.placeholder = 'Type to search here...';
 let button = document.createElement('button');
 button.textContent = 'Search';
 let pageHeader = document.querySelector('.page-header');
-
 searchDiv.appendChild(input);
 searchDiv.appendChild(button);
 pageHeader.appendChild(searchDiv);
@@ -115,12 +109,21 @@ pageHeader.appendChild(searchDiv);
                   - AND the input length is not zero.
                - Store results in a new array
                - Add a class of 'match' to new items in results array 
-            - add else if that checks:
-               - 
-   3. Paginate results by saving the search into an array.       
-         - Find the number pages needed for search results by dividing resutls array by 10.
-         - Call the 'showPage' function with the search results array and number of pages needed.
-   4. If no records are returned show "No results" on page.
+         - create result array - get all elements with class of 'match'
+         - return results array.
+  ***/         
+ 
+  /***
+   3. Add 'submit' event listener to button.
+      - Store current input text value in variable  
+      - Call the simple search function in #2
+      - Inlude the student list and current input text variable.
+      - Find the number pages needed for search results by dividing results array by 10.
+      - Call the 'showPage' function with the search results array and number of pages needed.
+   ***/
+
+ /***        
+   4. Update showPage function: If no records are returned show "No results" on page.
          - if results array equals zero
          - Hide ul with class of '.student-list'
          - Create new p element 
