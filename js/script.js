@@ -90,6 +90,22 @@ appendPageLinks(studentList);
       - Create button
       - Append input and button inside of div (to the end of div)
       - Append div to the end of the element with the class of '.page-header'
+*/
+
+let searchDiv = document.createElement('div');
+searchDiv.className = 'student-search';
+let input = document.createElement('input');
+input.placeholder = 'Type to search here...';
+let button = document.createElement('button');
+button.textContent = 'Search';
+let pageHeader = document.querySelector('.page-header');
+
+searchDiv.appendChild(input);
+searchDiv.appendChild(button);
+pageHeader.appendChild(searchDiv);
+
+
+/***
    2. Function to run a simple search.
       -Add function to run search. Include parameters for existing array and input text.
          - Loop over student array
