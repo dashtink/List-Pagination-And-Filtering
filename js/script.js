@@ -18,6 +18,10 @@ let itemsPerPage = 10;
 const showPage = (list, page) => {
    let startIndex = (page * itemsPerPage) - itemsPerPage;
    let endIndex = page * itemsPerPage;
+   let p = document.createElement('p');
+   p.textContent = "No results";
+   let ul = document.querySelector('.student-list');
+   let div = ul.parentNode;
 
    for (i = 0; i < list.length; i++){
       if (i >= startIndex && i < endIndex){
@@ -28,6 +32,13 @@ const showPage = (list, page) => {
          list[i].style.display = 'none';
       }
    }
+
+   if (list.length == 0){
+      div.insertBefore(p, ul);
+   } else if (div && list.length > 0){
+         p.remove();
+   }; 
+
 };
 
 showPage(studentList,1);
@@ -69,7 +80,6 @@ const appendPageLinks = (list) => {
 
             event.target.classList.add('active');
             let pageNum = event.target.textContent;
-            console.log(pageNum);
 
             showPage(studentList, pageNum);
       };
@@ -81,6 +91,12 @@ const appendPageLinks = (list) => {
 }
 
 appendPageLinks(studentList);
+
+/*** Function to remove pagination */
+const removePageLinks = () => {
+let removePagination = document.querySelector('.pagination');
+removePagination.remove();
+};
 
 
 /*** 
@@ -119,14 +135,15 @@ const simpleSearch = (list, input) => {
    for(let i = 0; i < list.length; i++){
       list[i].classList.remove('match');
 
-      if(input.length !== 0 && input.length !== '' && list[i].textContent.toLowerCase().includes(input.toLowerCase())){
+      if(input.length !== 0 && list[i].textContent.toLowerCase().includes(input.toLowerCase())){
          list[i].classList.add('match');
          results.push(list[i]);
       } else {
          list[i].style.display = 'none';
       };
       };
-      console.log(results);
+
+      console.log(results.length);
       return(results);
       
 }
@@ -147,9 +164,9 @@ const eventActions = () => {
       let searchResults = simpleSearch(studentList, inputValue);
       let searchResultPages = Math.ceil(searchResults.length / itemsPerPage);
 
-      console.log(searchResults, searchResultPages);
       showPage(searchResults, searchResultPages);
-      
+      removePageLinks();
+      appendPageLinks(searchResults);
 };
 
 /** Adds event listener for 'click' to button */
@@ -173,4 +190,6 @@ const eventActions = () => {
          - Give p element text content of "No results"
          - Append p element to parent of ul with class of '.student-list'
 ***/
+
+
 
