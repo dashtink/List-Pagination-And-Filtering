@@ -12,7 +12,7 @@ let studentList = document.getElementsByClassName('student-item');
 let itemsPerPage = 10;
 
 /*** 
-   Function to conditionally display students on page
+   Function to conditionally display students on page based on student index and total students in the list.
 ***/
 
 const showPage = (list, page) => {
@@ -33,7 +33,7 @@ const showPage = (list, page) => {
 showPage(studentList,1);
 
 /*** 
-   Function to append the pagination links at the top of the student list
+   Function to append the pagination links at the top of the student list and add click event listeners to trigger 'showPage' function and set or remote a class of 'action'. 
 ***/
 
 const appendPageLinks = (list) => {
@@ -45,7 +45,7 @@ const appendPageLinks = (list) => {
    let pageParent = document.querySelector('.page');
    let pageHeader = document.querySelector('.page-header');
 
-   /** Create line items and insert anchor tags inside ul. */
+   /** Creates line items and inserts anchor tags inside ul. */
    for (let i = 1; i < numberOfLinks; i++){
       let lineItem = document.createElement('li');
       lineItem.innerHTML = '<a href=#>' + i + '</a>';
@@ -59,7 +59,7 @@ const appendPageLinks = (list) => {
 
    let links = document.getElementsByTagName('A');
    
-   //* Add a “click” event listener to each anchor tag. */
+   /** Add the “click” event listener to each anchor tag. */
    div.addEventListener('click', (event) => {
       if(event.target.tagName = 'A'){
 
@@ -75,8 +75,10 @@ const appendPageLinks = (list) => {
       };
    }); 
    
+   /** Inserts dic into the element with the class of '.page-header'. */
    pageParent.insertBefore(div, pageHeader);   
 
 }
+
 
 appendPageLinks(studentList);
