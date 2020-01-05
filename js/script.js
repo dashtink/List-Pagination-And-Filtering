@@ -119,13 +119,16 @@ const simpleSearch = (list, input) => {
    for(let i = 0; i < list.length; i++){
       list[i].classList.remove('match');
 
-      if(input.length !== 0 && list[i].textContent.toLowerCase().includes(input.toLowerCase())){
+      if(input.length !== 0 && input.length !== '' && list[i].textContent.toLowerCase().includes(input.toLowerCase())){
          list[i].classList.add('match');
          results.push(list[i]);
+      } else {
+         list[i].style.display = 'none';
       };
       };
       console.log(results);
       return(results);
+      
 }
 
   /***
@@ -136,7 +139,9 @@ const simpleSearch = (list, input) => {
       - Find the number pages needed for search results by dividing results array by 10.
       - Call the 'showPage' function with the search results array and number of pages needed.
    ***/
-// Event listerner actions
+
+
+/** Event listerner actions */
 const eventActions = () => {
    let inputValue = input.value; 
       let searchResults = simpleSearch(studentList, inputValue);
@@ -144,15 +149,17 @@ const eventActions = () => {
 
       console.log(searchResults, searchResultPages);
       showPage(searchResults, searchResultPages);
+      
 };
-   ///add keyup as well as click
+
+/** Adds event listener for 'click' to button */
   searchDiv.addEventListener('click', (event) => {
    if(event.target.tagName == 'BUTTON'){
       eventActions(event);
    };
 }); 
 
-
+/** Adds event listener for 'keyup' to input */
    searchDiv.addEventListener('keyup', (event) => {
       if(event.target.tagName == 'INPUT'){
          eventActions(event);
