@@ -113,6 +113,21 @@ pageHeader.appendChild(searchDiv);
          - return results array.
   ***/         
  
+const simpleSearch = (list, input) => {
+   let results = [];
+
+   for(let i = 0; i < list.length; i++){
+      list[i].classList.remove('match');
+
+      if(input.length !== 0 && list[i].textContent.toLowerCase().includes(input.toLowerCase())){
+         list[i].classList.add('match');
+         results.push(list[i]);
+      };
+      };
+      console.log(results);
+      return(results);
+}
+
   /***
    3. Add 'submit' event listener to button.
       - Store current input text value in variable  
@@ -121,7 +136,28 @@ pageHeader.appendChild(searchDiv);
       - Find the number pages needed for search results by dividing results array by 10.
       - Call the 'showPage' function with the search results array and number of pages needed.
    ***/
+// Event listerner actions
+const eventActions = () => {
+   let inputValue = input.value; 
+      let searchResults = simpleSearch(studentList, inputValue);
+      let searchResultPages = Math.ceil(searchResults.length / itemsPerPage);
 
+      console.log(searchResults, searchResultPages);
+      showPage(searchResults, searchResultPages);
+};
+   ///add keyup as well as click
+  searchDiv.addEventListener('click', (event) => {
+   if(event.target.tagName == 'BUTTON'){
+      eventActions(event);
+   };
+}); 
+
+
+   searchDiv.addEventListener('keyup', (event) => {
+      if(event.target.tagName == 'INPUT'){
+         eventActions(event);
+      };
+   }); 
  /***        
    4. Update showPage function: If no records are returned show "No results" on page.
          - if results array equals zero
@@ -130,3 +166,4 @@ pageHeader.appendChild(searchDiv);
          - Give p element text content of "No results"
          - Append p element to parent of ul with class of '.student-list'
 ***/
+
