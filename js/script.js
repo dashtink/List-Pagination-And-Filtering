@@ -82,3 +82,32 @@ const appendPageLinks = (list) => {
 
 
 appendPageLinks(studentList);
+
+/*** 
+   1. Add search bar.
+      - Create div
+      - Create input
+      - Create button
+      - Append input and button inside of div (to the end of div)
+      - Append div to the end of the element with the class of '.page-header'
+   2. Function to run a simple search.
+      -Add function to run search. Include parameters for existing array and input text.
+         - Loop over student array
+            - remove any students that have a class for 'match'
+            - add if statement that checks: 
+                  - if the input (lowercase) includes the text content of the student list index (lowercase) 
+                  - AND the input length is not zero.
+               - Store results in a new array
+               - Add a class of 'match' to new items in results array 
+            - add else if that checks:
+               - 
+   3. Paginate results by saving the search into an array.       
+         - Find the number pages needed for search results by dividing resutls array by 10.
+         - Call the 'showPage' function with the search results array and number of pages needed.
+   4. If no records are returned show "No results" on page.
+         - if results array equals zero
+         - Hide ul with class of '.student-list'
+         - Create new p element 
+         - Give p element text content of "No results"
+         - Append p element to parent of ul with class of '.student-list'
+***/
