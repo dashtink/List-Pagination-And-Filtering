@@ -28,17 +28,16 @@ const showPage = (list, page) => {
    for (i = 0; i < list.length; i++){
       if (i >= startIndex && i < endIndex){
          list[i].style.display = '';
-         console.log(startIndex, endIndex);
       }
       else {
          list[i].style.display = 'none';
       }
    }
-
+   /* Inserts and removes 'No Results' conditionally */
    if (list.length == 0 && checkForP == null){
       div.insertBefore(p, ul);
    } else if (checkForP && list.length >= 0 ){
-         checkForP.remove();
+      checkForP.remove();
    }; 
 
 };
@@ -87,7 +86,7 @@ const appendPageLinks = (list) => {
       };
    }); 
    
-   /** Inserts dic into the element with the class of '.page-header'. */
+   /** Inserts div into the element with the class of '.page-header'. */
    pageParent.insertBefore(div, pageHeader);   
 
 }
@@ -96,8 +95,8 @@ appendPageLinks(studentList);
 
 /*** Function to remove pagination */
 const removePageLinks = () => {
-let removePagination = document.querySelector('.pagination');
-removePagination.remove();
+   let removePagination = document.querySelector('.pagination');
+   removePagination.remove();
 };
 
 
@@ -145,10 +144,8 @@ const simpleSearch = (list, input) => {
       };
       };
 
-      console.log(results.length);
       return(results);
-      
-}
+};
 
   /***
    3. Add 'submit' event listener to button.
