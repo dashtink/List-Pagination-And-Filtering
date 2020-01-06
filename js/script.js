@@ -82,7 +82,7 @@ const appendPageLinks = (list) => {
             event.target.classList.add('active');
             let pageNum = event.target.textContent;
 
-            showPage(studentList, pageNum);
+            showPage(list, pageNum);
       };
    }); 
    
@@ -134,10 +134,8 @@ const simpleSearch = (list, input) => {
    let results = [];
 
    for(let i = 0; i < list.length; i++){
-      list[i].classList.remove('match');
 
-      if(input.length !== 0 && list[i].textContent.toLowerCase().includes(input.toLowerCase())){
-         list[i].classList.add('match');
+      if(input.length !== '' && list[i].textContent.toLowerCase().includes(input.toLowerCase())){
          results.push(list[i]);
       } else {
          list[i].style.display = 'none';
@@ -163,7 +161,7 @@ const eventActions = () => {
       let searchResults = simpleSearch(studentList, inputValue);
       let searchResultPages = Math.ceil(searchResults.length / itemsPerPage);
 
-      showPage(searchResults, searchResultPages);
+      showPage(searchResults, 1);
       removePageLinks();
       appendPageLinks(searchResults);
 };
